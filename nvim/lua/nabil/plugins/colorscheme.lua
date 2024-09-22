@@ -3,13 +3,17 @@ return {
   priority = 1000,
   config = function()
     vim.cmd.colorscheme("midnight")
+
+    vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
   end,
 
   -- "folke/tokyonight.nvim",
   -- config = function()
   --   local transparent = false -- set to true if you would like to enable transparency
   --
-  --   local bg = "#011628"
+  --   local bg = "#000000"
+  --   -- "#011628"
   --   local bg_dark = "#011423"
   --   local bg_highlight = "#143652"
   --   local bg_search = "#0A64AC"
@@ -44,7 +48,7 @@ return {
   --       colors.fg_sidebar = fg_dark
   --     end,
   --   })
-
+  --
   --   vim.cmd("colorscheme tokyonight")
   -- end,
 }

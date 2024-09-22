@@ -7,7 +7,12 @@ keymap.set("n", "<S-k>", "<C-u>zz")
 
 keymap.set("n", "<C-p>", "<C-^>")
 
+keymap.set("n", "<tab>", "%")
+keymap.set("v", "<tab>", "%")
+
 keymap.set("n", "<leader>ch", ":nohl<CR>", { desc = "Clear search highlights" })
+
+keymap.set("n", "<leader>ac", ":%s/<c-r><c-w>/new value/g", { desc = "Change all under cursor" })
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment

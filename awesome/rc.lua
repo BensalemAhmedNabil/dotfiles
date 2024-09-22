@@ -170,19 +170,6 @@ lain.layout.cascade.tile.ncol = 2
 
 beautiful.init(string.format(gears.filesystem.get_configuration_dir() .. "/themes/%s/theme.lua", chosen_theme))
 
-local myawesomemenu = {
-	{
-		"hotkeys",
-		function()
-			return false, hotkeys_popup.show_help
-		end,
-	},
-	{ "manual", terminal .. " -e 'man awesome'" },
-	{ "edit config", "emacsclient -c -a emacs ~/.config/awesome/rc.lua" },
-	{ "arandr", "arandr" },
-	{ "restart", awesome.restart },
-}
-
 awful.util.mymainmenu = freedesktop.menu.build({
 	icon_size = beautiful.menu_height or 16,
 	before = {
@@ -250,6 +237,10 @@ globalkeys = my_table.join(
 		awful.spawn("dmenu_run")
 	end, { description = "Launch Dmenu", group = "awesome" }),
 
+	awful.key({ modkey, "Shift" }, "s", function()
+		awful.spawn("flameshot gui --clipboard")
+	end, { description = "Launch Flameshot", group = "awesome" }),
+
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "Launch terminal", group = "awesome" }),
@@ -261,7 +252,7 @@ globalkeys = my_table.join(
 		awful.spawn.with_shell("dm-logout")
 	end, { description = "Quit awesome", group = "awesome" }),
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "Show help", group = "awesome" }),
-	awful.key({ modkey, "Shift" }, "w", function()
+	awful.key({ modkey, "Shift" }, "d", function()
 		awful.util.mymainmenu:show()
 	end, { description = "Show main menu", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "b", function()
@@ -320,37 +311,6 @@ globalkeys = my_table.join(
 			awful.keygrabber.stop(grabber)
 		end)
 	end, { description = "followed by KEY", group = "Dmscripts" }),
-
-	-- Emacs (Super + e followed by KEY)
-	awful.key({ modkey }, "e", function()
-		local grabber
-		grabber = awful.keygrabber.run(function(_, key, event)
-			if event == "release" then
-				return
-			end
-
-			if key == "e" then
-				awful.spawn.with_shell(emacs .. "--eval '(dashboard-refresh-buffer)'")
-			elseif key == "a" then
-				awful.spawn.with_shell(emacs .. "--eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/\")'")
-			elseif key == "b" then
-				awful.spawn.with_shell(emacs .. "--eval '(ibuffer)'")
-			elseif key == "d" then
-				awful.spawn.with_shell(emacs .. "--eval '(dired nil)'")
-			elseif key == "i" then
-				awful.spawn.with_shell(emacs .. "--eval '(erc)'")
-			elseif key == "n" then
-				awful.spawn.with_shell(emacs .. "--eval '(elfeed)'")
-			elseif key == "s" then
-				awful.spawn.with_shell(emacs .. "--eval '(eshell)'")
-			elseif key == "v" then
-				awful.spawn.with_shell(emacs .. "--eval '(+vterm/here nil)'")
-			elseif key == "w" then
-				awful.spawn.with_shell(emacs .. "--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'")
-			end
-			awful.keygrabber.stop(grabber)
-		end)
-	end, { description = "followed by KEY", group = "Emacs" }),
 
 	-- Tag browsing with modkey
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
@@ -471,9 +431,9 @@ globalkeys = my_table.join(
 	awful.key({ modkey, "Shift" }, "Right", function()
 		lain.util.move_tag(1)
 	end, { description = "move tag to the right", group = "tag" }),
-	awful.key({ modkey, "Shift" }, "d", function()
-		lain.util.delete_tag()
-	end, { description = "delete tag", group = "tag" }),
+	-- awful.key({ modkey, "Shift" }, "d", function()
+	-- 	lain.util.delete_tag()
+	-- end, { description = "delete tag", group = "tag" }),
 
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
@@ -721,19 +681,19 @@ awful.rules.rules = {
 	-- Set applications to be maximized at startup.
 	-- find class or role via xprop command
 
-	{ rule = { class = "Gimp*", role = "gimp-image-window" }, properties = { maximized = true } },
-
-	{ rule = { class = "inkscape" }, properties = { maximized = true } },
-
-	{ rule = { class = mediaplayer }, properties = { maximized = true } },
-
-	{ rule = { class = "Vlc" }, properties = { maximized = true } },
-
-	{ rule = { class = "VirtualBox Manager" }, properties = { maximized = true } },
-
-	{ rule = { class = "VirtualBox Machine" }, properties = { maximized = true } },
-
-	{ rule = { class = "Xfce4-settings-manager" }, properties = { floating = false } },
+	-- { rule = { class = "Gimp*", role = "gimp-image-window" }, properties = { maximized = true } },
+	--
+	-- { rule = { class = "inkscape" }, properties = { maximized = true } },
+	--
+	-- { rule = { class = mediaplayer }, properties = { maximized = true } },
+	--
+	-- { rule = { class = "Vlc" }, properties = { maximized = true } },
+	--
+	-- { rule = { class = "VirtualBox Manager" }, properties = { maximized = true } },
+	--
+	-- { rule = { class = "VirtualBox Machine" }, properties = { maximized = true } },
+	--
+	-- { rule = { class = "Xfce4-settings-manager" }, properties = { floating = false } },
 
 	-- Floating clients.
 	{
@@ -859,7 +819,7 @@ end)
 
 awful.spawn.with_shell(soundplayer .. startupSound)
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("alacritty -e sudo keyd")
+-- awful.spawn.with_shell("alacritty -e sudo keyd")
 awful.spawn.with_shell("feh --randomize --bg-fill ~/Pictures/") -- feh sets random wallpaper
 awful.spawn.with_shell("obsidian")
 
@@ -867,7 +827,6 @@ awful.spawn.with_shell("obsidian")
 --awful.spawn.with_shell("picom")
 --awful.spawn.with_shell("volumeicon")
 --awful.spawn.with_shell("killall conky && conky -c $HOME/.config/conky/awesome/" .. "doom-one" .. "-01.conkyrc")
---awful.spawn.with_shell("/usr/bin/emacs --daemon")
 
 --awful.spawn.with_shell("xargs xwallpaper --stretch < ~/.cache/wall")
 --awful.spawn.with_shell("~/.fehbg") -- set last saved feh wallpaper

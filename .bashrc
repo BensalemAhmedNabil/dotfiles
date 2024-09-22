@@ -47,12 +47,20 @@ if [ -d "$HOME/Applications" ] ;
   then PATH="$HOME/Applications:$PATH"
 fi
 
-if [ -d "$HOME/Nodejs/bin" ] ;
-  then PATH="$HOME/Nodejs/bin:$PATH"
+if [ -d "$HOME/.cargo/bin" ] ;
+  then PATH="$HOME/.cargo/bin/:$PATH"
+fi
+
+if [ -d "$HOME/node/bin" ] ;
+  then PATH="$HOME/node/bin:$PATH"
 fi
 
 if [ -d "$HOME/go/bin/" ] ;
   then PATH="$HOME/go/bin:$PATH"
+fi
+
+if [ -d "$HOME/deps/depot_tools" ] ;
+  then PATH="$HOME/deps/depot_tools:$PATH"
 fi
 
 ### CHANGE TITLE OF TERMINALS
@@ -152,6 +160,11 @@ up () {
 }
 
 ### ALIASES ###
+
+alias p='pnpm'
+
+alias vb='mpv --ytdl-format=22 $1'
+alias vm='mpv --ytdl-format=134+139 $1'
 
 # navigation
 alias ..='cd ..'
