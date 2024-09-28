@@ -1,3 +1,10 @@
+-- #  __    _ ___
+-- # |   \ | |   \     Nobilis Benz (NB)
+-- # | |\ \| | O /     http://www.youtube.com/c/NobilisBenz
+-- # | | \ | | O \     http://www.github.com/NobilisBenz/
+-- # |_|  \__|___/
+-- #
+
 local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
 

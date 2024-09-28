@@ -1,8 +1,23 @@
-#  ____ _____
-# |  _ \_   _|  Derek Taylor (DistroTube)
-# | | | || |    http://www.youtube.com/c/DistroTube
-# | |_| || |    http://www.gitlab.com/dwt1/
-# |____/ |_|
+#  _                _             
+# | |              | |            
+# | |__   __ _  ___| | _____ _ __ 
+# | '_ \ / _` |/ __| |/ / _ \ '__|
+# | | | | (_| | (__|   <  __/ |   
+# |_| |_|\__,_|\___|_|\_\___|_|   
+#
+#        _           
+#       | |          
+#  _ __ | |__  
+# | '_ \| '_ \     Nobilis Benz (NB)
+# | | | | |_) |    http://www.youtube.com/c/NobilisBenz
+# |_| |_|_.__/     http://www.github.com/NobilisBenz/
+#
+#
+#  __    _ ___
+# |   \ | |   \     Nobilis Benz (NB)
+# | |\ \| |   /     http://www.youtube.com/c/NobilisBenz
+# | | \ | |   \     http://www.github.com/NobilisBenz/
+# |_|  \__|___/
 #
 # My bash config. Not much to see here; just some pretty standard stuff.
 
@@ -51,8 +66,8 @@ if [ -d "$HOME/.cargo/bin" ] ;
   then PATH="$HOME/.cargo/bin/:$PATH"
 fi
 
-if [ -d "$HOME/node/bin" ] ;
-  then PATH="$HOME/node/bin:$PATH"
+if [ -d "$HOME/nodejs/bin" ] ;
+  then PATH="$HOME/nodejs/bin:$PATH"
 fi
 
 if [ -d "$HOME/go/bin/" ] ;

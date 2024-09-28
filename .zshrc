@@ -1,8 +1,9 @@
-#  ____ _____
-# |  _ \_   _|  Derek Taylor (DistroTube)
-# | | | || |    http://www.youtube.com/c/DistroTube
-# | |_| || |    http://www.gitlab.com/dwt1/
-# |____/ |_|
+#  __    _ ___
+# |   \ | |   \     Nobilis Benz (NB)
+# | |\ \| | 0 /     http://www.youtube.com/c/NobilisBenz
+# | | \ | | 0 \     http://www.github.com/NobilisBenz/
+# |_|  \__|___/
+#
 # My zsh config. Not much to see here; just some pretty standard stuff.
 
 ### EXPORT
@@ -41,16 +42,12 @@ if [ -d "$HOME/Applications" ] ;
   then PATH="$HOME/Applications:$PATH"
 fi
 
-if [ -d "/usr/snap/gnome-42-2204/176/usr/lib/x86_64-linux-gnu/" ] ;
-  then PATH="/usr/snap/gnome-42-2204/176/usr/lib/x86_64-linux-gnu/:$PATH"
-fi
-
 if [ -d "$HOME/.cargo/bin" ] ;
   then PATH="$HOME/.cargo/bin/:$PATH"
 fi
 
-if [ -d "$HOME/node/bin" ] ;
-  then PATH="$HOME/node/bin:$PATH"
+if [ -d "$HOME/nodejs/bin" ] ;
+  then PATH="$HOME/nodejs/bin:$PATH"
 fi
 
 if [ -d "$HOME/go/bin/" ] ;
