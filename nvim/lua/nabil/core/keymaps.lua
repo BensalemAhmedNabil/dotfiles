@@ -14,6 +14,12 @@ keymap.set("n", "<leader>ch", ":nohl<CR>", { desc = "Clear search highlights" })
 
 keymap.set("n", "<leader>ac", ":%s/<c-r><c-w>/new value/g", { desc = "Change all under cursor" })
 
+-- sniprun
+vim.api.nvim_set_keymap("v", "<leader>rs", "<Plug>SnipRun", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rs", "<Plug>SnipRun", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rf", "<Plug>SnipRunOperator", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rx", "<Plug>SnipClose", { silent = true })
+
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
