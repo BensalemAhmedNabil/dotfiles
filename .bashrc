@@ -178,8 +178,8 @@ up () {
 
 alias p='pnpm'
 
-alias vb='mpv --ytdl-format=22 $1'
-alias vm='mpv --ytdl-format=134+139 $1'
+alias mb='mpv --ytdl-format=22 "$1"'
+alias mm='mpv --ytdl-format=134+139 "$1"'
 
 # navigation
 alias ..='cd ..'
